@@ -1,0 +1,2 @@
+package com.dstwr.glass.widget
+enum class WidgetCatalog(val titleAr:String,val subtitleAr:String){CLOCK("ساعة زجاجية","الوقت والتاريخ"),SYSTEM("معلومات النظام","البطارية وحالة الجهاز"),DAILY("اليوم","التاريخ والتقويم"),WEATHER("الطقس","درجة الحرارة والحالة")}
