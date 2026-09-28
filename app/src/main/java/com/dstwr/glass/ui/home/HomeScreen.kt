@@ -16,7 +16,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.dstwr.glass.core.platform.PlatformCapabilities
+import com.dstwr.glass.core.platform.currentPlatformCapabilities
 import com.dstwr.glass.ui.components.GlassPill
 import com.dstwr.glass.ui.components.GlassSurface
 
@@ -25,7 +25,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
     val pulse by rememberInfiniteTransition(label = "glass").animateFloat(
         0.72f, 1f, infiniteRepeatable(tween(2200), RepeatMode.Reverse), label = "pulse"
     )
-    val capabilities = remember { PlatformCapabilities() }
+    val capabilities = remember { currentPlatformCapabilities() }
     Column(
         modifier.fillMaxSize().background(
             Brush.radialGradient(listOf(Color(0xFF344B86), Color(0xFF111625), Color(0xFF05060A)))
