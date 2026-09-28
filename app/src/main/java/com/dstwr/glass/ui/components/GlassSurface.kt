@@ -11,19 +11,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun GlassSurface(
-    modifier: Modifier = Modifier,
-    radius: Int = 28,
-    content: @Composable () -> Unit
-) {
+fun GlassSurface(modifier: Modifier = Modifier, radius: Int = 28, content: @Composable () -> Unit) {
     val shape = RoundedCornerShape(radius.dp)
-    Box(
-        modifier = modifier
-            .background(
-                Brush.linearGradient(
-                    listOf(Color.White.copy(.15f), Color.White.copy(.055f))
-                ), shape
-            )
-            .border(1.dp, Color.White.copy(.16f), shape)
-    ) { content() }
+    Box(modifier = modifier
+        .background(Brush.linearGradient(listOf(Color.White.copy(.17f), Color.White.copy(.055f), Color.White.copy(.10f))), shape)
+        .border(1.dp, Color.White.copy(.18f), shape)) { content() }
 }
