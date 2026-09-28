@@ -1,0 +1,37 @@
+name: DST Glass Manual Build
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dst-glass-manual-build
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Set up JDK 17
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: gradle
+      - name: Set up Gradle 9.6
+        uses: gradle/actions/setup-gradle@v5
+        with:
+          gradle-version: "9.6"
+      - name: Build debug APK
+        run: gradle --no-daemon --stacktrace assembleDebug
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: dst-glass-debug
+          path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
