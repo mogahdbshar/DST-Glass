@@ -1,3 +1,3 @@
 package com.dstwr.glass.widget
-data class WidgetLayoutSpec(val sizeClass:WidgetSizeClass,val minWidthDp:Int,val minHeightDp:Int)
-object WidgetLayouts{val small=WidgetLayoutSpec(WidgetSizeClass.SMALL,110,60);val medium=WidgetLayoutSpec(WidgetSizeClass.MEDIUM,180,110);val large=WidgetLayoutSpec(WidgetSizeClass.LARGE,250,160)}
+data class WidgetLayoutSpec(val columns:Int,val rows:Int,val compact:Boolean)
+fun WidgetSizeClass.spec():WidgetLayoutSpec=when(this){WidgetSizeClass.SMALL->WidgetLayoutSpec(2,1,true);WidgetSizeClass.MEDIUM->WidgetLayoutSpec(4,2,false);WidgetSizeClass.LARGE->WidgetLayoutSpec(4,4,false);WidgetSizeClass.WIDE->WidgetLayoutSpec(6,2,false)}
