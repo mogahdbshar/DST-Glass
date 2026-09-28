@@ -4,8 +4,8 @@
     <!-- DST Glass currently requires no runtime or dangerous permissions. -->
 
     <application
-        android:icon="@mipmap/ic_launcher"
-        android:roundIcon="@mipmap/ic_launcher"
+        android:icon="@drawable/dst_glass_logo"
+        android:roundIcon="@drawable/dst_glass_logo"
         android:name=".DSTGlassApplication"
         android:allowBackup="true"
         android:label="@string/app_name"
