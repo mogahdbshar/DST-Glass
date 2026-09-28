@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.dstwr.glass.ui.designs.DesignsScreen
+import com.dstwr.glass.ui.editor.DesignEditorScreen
 import com.dstwr.glass.ui.home.HomeScreen
 import com.dstwr.glass.ui.settings.SettingsScreen
 import com.dstwr.glass.ui.widgets.WidgetsScreen
@@ -39,6 +40,7 @@ fun DstGlassNavigation() {
                 DstGlassDestination.WIDGETS -> WidgetsScreen()
                 DstGlassDestination.DESIGNS -> DesignsScreen()
                 DstGlassDestination.SETTINGS -> SettingsScreen()
+                DstGlassDestination.EDITOR -> DesignEditorScreen()
             }
         }
     }
