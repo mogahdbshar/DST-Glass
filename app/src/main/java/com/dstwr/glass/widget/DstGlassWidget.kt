@@ -23,7 +23,7 @@ class DstGlassWidget : GlanceAppWidget() {
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Text("DST Glass", style = TextStyle(color = ColorProvider(Color.White)))
-                    Text("Glass widget", style = TextStyle(color = ColorProvider(Color.White.copy(alpha = .68f))))
+                    Text("زجاج حي", style = TextStyle(color = ColorProvider(Color.White.copy(alpha = .68f))))
                 }
             }
         }
