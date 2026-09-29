@@ -12,35 +12,33 @@ import com.dstwr.glass.widget.*
 fun WidgetBuilderScreen() {
     var type by remember { mutableStateOf(WidgetCatalog.CLOCK) }
     var size by remember { mutableStateOf(WidgetSizeClass.MEDIUM) }
-    val types = WidgetCatalog.entries
-    val sizes = WidgetSizeClass.entries
 
     Column(
-        Modifier.fillMaxSize().padding(20.dp),
+        modifier = Modifier.fillMaxSize().padding(20.dp),
         verticalArrangement = Arrangement.spacedBy(14.dp)
     ) {
         Text("منشئ الويدجت", color = Color.White, style = MaterialTheme.typography.headlineLarge)
-        Text("ابنِ شكل الويدجت قبل إضافته للشاشة.", color = Color.White.copy(.6f))
+        Text("ابنِ شكل الويدجت قبل إضافته للشاشة.", color = Color.White.copy(alpha = .6f))
 
         Text("النوع", color = Color.White)
-        SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
-            types.forEachIndexed { index, item ->
+        SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
+            WidgetCatalog.entries.forEachIndexed { index, item ->
                 SegmentedButton(
                     selected = type == item,
                     onClick = { type = item },
-                    shape = SegmentedButtonDefaults.itemShape(index = index, count = types.size),
+                    shape = SegmentedButtonDefaults.itemShape(index, WidgetCatalog.entries.size),
                     label = { Text(item.titleAr) }
                 )
             }
         }
 
         Text("المقاس", color = Color.White)
-        SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
-            sizes.forEachIndexed { index, item ->
+        SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
+            WidgetSizeClass.entries.forEachIndexed { index, item ->
                 SegmentedButton(
                     selected = size == item,
                     onClick = { size = item },
-                    shape = SegmentedButtonDefaults.itemShape(index = index, count = sizes.size),
+                    shape = SegmentedButtonDefaults.itemShape(index, WidgetSizeClass.entries.size),
                     label = { Text(item.name) }
                 )
             }
@@ -50,8 +48,10 @@ fun WidgetBuilderScreen() {
         WidgetPreviewCard(WidgetPreview(type = type, size = size))
 
         Button(
-            Modifier.fillMaxWidth(),
-            onClick = {}
-        ) { Text("حفظ وإضافة الويدجت") }
+            onClick = {},
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("حفظ وإضافة الويدجت")
+        }
     }
 }
