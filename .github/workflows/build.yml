@@ -27,8 +27,16 @@ jobs:
         uses: gradle/actions/setup-gradle@v5
         with:
           gradle-version: "9.6.1"
+      - name: Verify Android resources
+        run: |
+          if git grep -n 'Theme\.Material\.NoActionBar' -- 'app/src/main/res' ; then
+            echo "Legacy Theme.Material.NoActionBar reference found"
+            exit 1
+          fi
+      - name: Clean build outputs
+        run: gradle --no-daemon clean
       - name: Build debug APK
-        run: gradle --no-daemon --stacktrace assembleDebug
+        run: gradle --no-daemon --stacktrace --rerun-tasks assembleDebug
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
